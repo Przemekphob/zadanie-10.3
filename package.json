@@ -1,7 +1,7 @@
 {
    "name": "Project3-golden",
    "version": "1.0.0",
-   "description": "http://przemekphob.github.io/Project3-golden/",
+   "description": "http://przemekphob.github.io/Project3/",
    "main": "index.js",
    "scripts": {
       "test": "npm-run-all test:*",
@@ -24,15 +24,15 @@
    },
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/Przemekphob/Project3-golden.git"
+      "url": "git+https://github.com/Przemekphob/Project.git"
    },
    "keywords": [],
    "author": "",
    "license": "ISC",
    "bugs": {
-      "url": "https://github.com/Przemekphob/Project3-golden/issues"
+      "url": "https://github.com/Przemekphob/Project3/issues"
    },
-   "homepage": "https://github.com/Przemekphob/Project3-golden#readme",
+   "homepage": "https://github.com/Przemekphob/Project3#readme",
    "devDependencies": {
       "autoprefixer-cli": "^1.0.0",
       "browser-sync": "^2.23.5",

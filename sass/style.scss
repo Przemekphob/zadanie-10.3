@@ -27,7 +27,7 @@ section {
   	width: 500%;
   	height: 100%;
   	position: relative;
-  	left: -100%;
+  	left: 0;
 
 	  	li {
 			width: calc(100% / 5);
@@ -73,6 +73,9 @@ section {
 }
 
 
+#dots li.active {
+	background-color: red;
+}
 
 
 

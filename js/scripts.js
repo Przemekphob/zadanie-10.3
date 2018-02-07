@@ -1,51 +1,73 @@
 $(function(){
-	var carouselList = $("#carousel ul");
+    var carouselList = $("#carousel ul");
 
-	setInterval(changeSlide, 5000);
-
-	function changeSlide () {
-		carouselList.animate({'marginLeft':'-100%'}, 500, moveFirstSlide);
-	}
-
-	carouselList.find("li:first").before(carouselList.find("li:last"));
-
-	function moveFirstSlide() {
-		var firstItem = carouselList.find("li:first");
-		var lastItem = carouselList.find("li:last");
-
-		lastItem.after(firstItem);
-		carouselList.css({'marginLeft':0});
-	}
-
-	$( ".next" ).click(function() {
-		carouselList.animate({'marginLeft':'-100%'}, 500, moveFirstSlide);
-	});
-
-
-	function moveLastSlide() {
-		var firstItem = carouselList.find("li:first");
-		var lastItem = carouselList.find("li:last");
-
-		firstItem.before(lastItem);
-		carouselList.css({'marginLeft':0});
-	}
-
-
-	$( ".prev" ).click(function() {
-		carouselList.animate({'marginLeft':'100%'}, 500, moveLastSlide);
-	});
-
-
-
-	$('#dots').children().each(function(idx, val){
-		$(this).click(function() { 
-			carouselList.animate({'marginLeft': (idx * -100) + "%"}, 500); 
-		});
-	})
-
-
-
-
+ 
+    var timer = setInterval(changeSlide, 5000);
+ 
+    function restartTime() {
+        clearInterval(timer);
+        timer = setInterval(changeSlide, 5000);
+    }
+   
+    function getActiveDotIndex() {
+        var currentDotIdx;
+        $("#dots li").each(function(idx) {
+            if($(this).hasClass("active")) {
+                currentDotIdx = idx;
+                return;
+            }
+        });
+        return currentDotIdx;
+    }
+   
+    function dotActiveToLeft() {
+        var currentDotIdx = getActiveDotIndex();
+        if(currentDotIdx <= 0) {
+            currentDotIdx = $("#dots li").length - 1;
+        } else {
+            currentDotIdx--;
+        }
+        carouselList.animate({'marginLeft': (currentDotIdx * -100) + "%"}, 500);
+        $("#dots li.active").removeClass("active");
+        $("#dots li").eq(currentDotIdx).addClass("active");
+    }
+   
+    function dotActiveToRight() {
+        var currentDotIdx = getActiveDotIndex();
+        if(currentDotIdx >= $("#dots li").length - 1) {
+            currentDotIdx = 0;
+        } else {
+            currentDotIdx++;
+        };
+        carouselList.animate({'marginLeft': (currentDotIdx * -100) + "%"}, 500);
+        $("#dots li.active").removeClass("active");
+        $("#dots li").eq(currentDotIdx).addClass("active");
+    }
+   
+    function changeSlide () {
+        dotActiveToRight();
+    }
+ 
+    $( ".next" ).click(function() {
+        dotActiveToRight();
+        restartTime();
+       
+    });
+ 
+    $( ".prev" ).click(function() {
+        dotActiveToLeft();
+        restartTime();
+       
+    });
+ 
+    $('#dots').children().each(function(idx, val) {
+        $(this).click(function() {
+            if(getActiveDotIndex() != idx) {
+                carouselList.animate({'marginLeft': (idx * -100) + "%"}, 500);
+                $("#dots li.active").removeClass("active");
+                $(this).addClass("active");
+            }
+            restartTime();
+        });
+    });
 });
-
-

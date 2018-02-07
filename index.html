@@ -9,7 +9,7 @@
     <body>
         <section>
             <div id="carousel">
-                <ul>
+                <ul id="images">
                     <li class="slide"><img src="https://dummyimage.com/400x400/000/fff&text=1" alt="1"></li>
                     <li class="slide"><img src="https://dummyimage.com/400x400/000/fff&text=2" alt="2"></li>
                     <li class="slide"><img src="https://dummyimage.com/400x400/000/fff&text=3" alt="3"></li>
@@ -17,10 +17,21 @@
                     <li class="slide"><img src="https://dummyimage.com/400x400/000/fff&text=5" alt="5"></li>                          
                 </ul>
             </div>   
-            <div class="slider_nav">
-                <button class="prev"> previous </button> 
-                <button class="next"> next image </button>
-            </div>    
+            <div class="slider">
+                <div class="slider__nav">
+                    <button class="prev"> previous </button> 
+                    <button class="next"> next image </button>
+                </div>    
+                <div class="slider__dots">
+                    <ul id="dots">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>  
+            </div>
         </section>    
     	<script type="text/javascript" src="js/scripts.js"></script>
     </body>

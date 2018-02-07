@@ -20,7 +20,7 @@ section {
   box-sizing: border-box;
 }
 
-ul {
+#carousel ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -30,13 +30,44 @@ ul {
   left: -100%;
 }
 
-ul li {
-  list-style-type: none;
+#carousel ul li {
   width: calc(100% / 5);
   height: 100%;
   padding: 0;
   margin: 0;
   float: left;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.slider__nav {
+  padding: 25px;
+}
+
+.slider__dots {
+  padding: 25px;
+}
+
+.slider__dots ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.slider__dots ul li {
+  padding: 10px;
+  margin: 5px;
+  border: 2px solid #3498db;
+  border-radius: 50%;
+  background-color: #3498db;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

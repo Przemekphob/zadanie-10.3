@@ -1,19 +1,20 @@
 $(function(){
 	var carouselList = $("#carousel ul");
 
-	setInterval(changeSlide, 3000);
+	setInterval(changeSlide, 5000);
 
 	function changeSlide () {
 		carouselList.animate({'marginLeft':'-100%'}, 500, moveFirstSlide);
 	}
 
+	carouselList.find("li:first").before(carouselList.find("li:last"));
 
 	function moveFirstSlide() {
 		var firstItem = carouselList.find("li:first");
 		var lastItem = carouselList.find("li:last");
 
 		lastItem.after(firstItem);
-		carouselList.css({marginLeft:0});
+		carouselList.css({'marginLeft':0});
 	}
 
 	$( ".next" ).click(function() {
@@ -36,35 +37,15 @@ $(function(){
 
 
 
+	$('#dots').children().each(function(idx, val){
+		$(this).click(function() { 
+			carouselList.animate({'marginLeft': (idx * -100) + "%"}, 500); 
+		});
+	})
 
-
-
-
-/*
-	  $('.prev').on('click', function() {
-
-	    carouselList.animate({left: '0%'}, 300, function(){
-
-	      carouselList.css('left', '-100%');
-
-	      $('.slide').first().before($('.slide').last());
-
-	    });
-
-
-	  });
-
-*/
 
 
 
 });
-
-
-
-
-
-
-
 
 

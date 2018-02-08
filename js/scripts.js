@@ -1,7 +1,7 @@
 $(function(){
     var carouselList = $("#carousel ul");
 
- 
+
     var timer = setInterval(changeSlide, 5000);
  
     function restartTime() {
